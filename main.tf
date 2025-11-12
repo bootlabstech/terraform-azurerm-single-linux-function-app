@@ -6,6 +6,7 @@ resource "azurerm_linux_function_app" "example" {
   resource_group_name = var.resource_group_name
   location            = var.location
   virtual_network_subnet_id = var.virtual_network_subnet_id
+  https_only = var.https_only
 
   storage_account_name       = var.storage_accountid
   service_plan_id            = var.app_service_planid
@@ -15,6 +16,13 @@ resource "azurerm_linux_function_app" "example" {
     app_command_line       = var.app_command_line
     app_scale_limit        = var.app_scale_limit
     vnet_route_all_enabled = var.vnet_route_all_enabled
+  }
+  lifecycle {
+    ignore_changes = [
+      site_config,
+      identity,
+      app_settings,
+    ]
   }
 
  

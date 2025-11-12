@@ -6,6 +6,11 @@ variable "location" {
   description = "The Azure Region where the Resource Group should exist."
   type        = string
 }
+variable "https_only" {
+  type = bool
+  default = true
+  
+}
 
 # # STORAGE ACCOUNT
 
