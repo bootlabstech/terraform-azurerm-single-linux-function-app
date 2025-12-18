@@ -7,9 +7,8 @@ variable "location" {
   type        = string
 }
 variable "https_only" {
-  type = bool
+  type    = bool
   default = true
-  
 }
 
 # # STORAGE ACCOUNT
@@ -48,7 +47,7 @@ variable "app_service_planid" {
   description = "The kind of the App Service Plan to create. Possible values are Windows (also available as App), Linux, elastic (for Premium Consumption) and FunctionApp (for a Consumption Plan). Defaults to Windows."
 
 }
-variable "storage_accountid" {
+variable "storage_account_name" {
   type        = string
   description = "Is this App Service Plan Reserved. Defaults to false."
 
@@ -83,10 +82,22 @@ variable "vnet_route_all_enabled" {
 
 }
 variable "public_network_access_enabled" {
-  type = bool
-  default = true
+  type    = bool
+  default = false
 }
 variable "virtual_network_subnet_id" {
   type = string
-  
+
+}
+
+variable "runtime_stack" {
+  description = "Runtime stack for the Function App (e.g., python, node, dotnet, java, powershell)"
+  type        = string
+  default     = "python" #node
+}
+
+variable "runtime_version" {
+  description = "Runtime version for the selected stack"
+  type        = string
+  default     = "3.12" #18
 }
